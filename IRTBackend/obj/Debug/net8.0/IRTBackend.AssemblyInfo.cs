@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("IRTBackend")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0d9e168c227230c0a4449bb0679249a32ea3c455")]
 [assembly: System.Reflection.AssemblyProductAttribute("IRTBackend")]
 [assembly: System.Reflection.AssemblyTitleAttribute("IRTBackend")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
