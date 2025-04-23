@@ -1,0 +1,13 @@
+
+".vs/" 
+"bin/" 
+"obj/" 
+"*.user" 
+"*.suo" 
+"*.log" 
+.vs/
+bin/
+obj/
+*.user
+*.suo
+*.log

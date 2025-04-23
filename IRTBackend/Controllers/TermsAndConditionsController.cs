@@ -12,5 +12,6 @@ public class TermsAndConditionsController(IMediator mediator) : BaseController.B
     [ProducesResponseType(typeof(SuccessfulResult), 200)]
     [ProducesResponseType(typeof(AppBadRequestResult), 400)]
     [ProducesResponseType(500)]
+    public async Task<IActionResult> GetTermsAndConditions([FromQuery])
 }
 

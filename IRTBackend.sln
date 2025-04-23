@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "Domain\Domain.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "Infrastructure\Infrastructure.csproj", "{7F81EADE-CCF6-4A37-8675-BBF56E7359B0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure.MongoDB", "Infrastructure.MongoDB\Infrastructure.MongoDB.csproj", "{53C4DCD1-0B5F-45F7-A35E-7425386F8AFB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{7F81EADE-CCF6-4A37-8675-BBF56E7359B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7F81EADE-CCF6-4A37-8675-BBF56E7359B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7F81EADE-CCF6-4A37-8675-BBF56E7359B0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{53C4DCD1-0B5F-45F7-A35E-7425386F8AFB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{53C4DCD1-0B5F-45F7-A35E-7425386F8AFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{53C4DCD1-0B5F-45F7-A35E-7425386F8AFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{53C4DCD1-0B5F-45F7-A35E-7425386F8AFB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
