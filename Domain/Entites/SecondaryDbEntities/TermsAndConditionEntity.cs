@@ -3,7 +3,7 @@ using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 
 namespace Domain.Entites.SecondaryDbEntities;
-class TermsAndConditionEntity
+public class TermsAndConditionEntity
 {
     [BsonId]
     [BsonRepresentation(BsonType.String)]
