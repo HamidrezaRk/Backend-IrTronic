@@ -1,7 +1,10 @@
-﻿using MediatR;
+﻿using Application.BaseRequest.Interface;
+using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
+using static Application.Failures.Failures;
 
 namespace IRTBackend.Controllers.BaseController;
 
@@ -71,5 +74,52 @@ public class BaseController(IMediator mediator) : Controller
     {
         return HttpContext.Connection.RemoteIpAddress?.ToString() ?? "-";
     }
+    public async Task<IActionResult> HandleRequest<Body, Result>(BaseRequest<Body, Result> request)
+    {
+        request.Ip = GetSourceIpAddress();
+        request.UserId = UserID;
+       // request.TokenIat = TokenCreateDate;
+        try
+        {
+            var result = await mediator.Send(request);
+            return Ok(result);
+        }
+        catch (Exception ex)
+        {
+            var handledException = HandleException(ex);
+            if (handledException != null)
+            {
+                return handledException;
+            }
+            throw;
+        }
+    }
+
+    public IActionResult? HandleException(Exception ex)
+    {
+        if (ex is Failure failure)
+        {
+            var errorResponse = new
+            {
+                failure.Code,
+                Message = failure.Massage,
+                failure.MetaData
+            };
+            return BadRequest(errorResponse);
+        }
+        else if (ex is Application.Failures.Failures.AuthorizationFailure)
+        {
+            return StatusCode(403, (new
+            {
+                Code = ex is UserIsSuspendedFailure ? 40301 : 40302,
+                Message = ex is UserIsSuspendedFailure ? "User is suspended" : "Token is expired"
+            }));
+        }
+        else
+        {
+            return null;
+        }
+    }
+
 
 }

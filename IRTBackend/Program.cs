@@ -82,12 +82,19 @@ internal class Program
             app.UseSwagger();
             app.UseSwaggerUI();
         }
+        app.UseStaticFiles();
+        app.UseRouting();
+        app.UseCors(x => x
+          .AllowAnyOrigin()
+          .AllowAnyMethod()
+          .AllowAnyHeader());
+
 
         app.UseHttpsRedirection();
 
-        app.UseAuthorization();
-
         app.UseAuthentication();
+
+        app.UseAuthorization();
 
         app.MapControllers();
 
