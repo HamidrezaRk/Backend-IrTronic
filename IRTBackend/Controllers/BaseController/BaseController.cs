@@ -1,6 +1,5 @@
 ﻿using Application.BaseRequest.Interface;
 using MediatR;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
@@ -11,7 +10,6 @@ namespace IRTBackend.Controllers.BaseController;
 public class BaseController(IMediator mediator) : Controller
 {
     protected readonly IMediator mediator = mediator;
-
 
     /// <summary>
     /// User ID 
@@ -48,6 +46,7 @@ public class BaseController(IMediator mediator) : Controller
             return null;
         }
     }
+
     public DateTime? TokenCreateDate
     {
         get
@@ -65,6 +64,16 @@ public class BaseController(IMediator mediator) : Controller
             return null;
         }
     }
+
+    public bool IsAuthViaPhone
+    {
+        get
+        {
+            var r = User.Claims.FirstOrDefault(x => x.Type == "IsAuthViaPhone");
+            return r is not null && bool.Parse(r.Value);
+        }
+    }
+
     /// <summary>
     /// Get source IP address
     /// </summary>
@@ -74,11 +83,21 @@ public class BaseController(IMediator mediator) : Controller
     {
         return HttpContext.Connection.RemoteIpAddress?.ToString() ?? "-";
     }
+
+    /// <summary>
+    /// Get language from header
+    /// </summary>
+    /// <returns></returns>
+
+  
+    [ApiExplorerSettings(IgnoreApi = true)]
     public async Task<IActionResult> HandleRequest<Body, Result>(BaseRequest<Body, Result> request)
     {
         request.Ip = GetSourceIpAddress();
+     //   request.Language = GetLanguageFromHeader();
         request.UserId = UserID;
        // request.TokenIat = TokenCreateDate;
+        //request.IsAuthViaPhone = IsAuthViaPhone;
         try
         {
             var result = await mediator.Send(request);
@@ -94,7 +113,7 @@ public class BaseController(IMediator mediator) : Controller
             throw;
         }
     }
-
+    [ApiExplorerSettings(IgnoreApi = true)]
     public IActionResult? HandleException(Exception ex)
     {
         if (ex is Failure failure)
@@ -120,6 +139,5 @@ public class BaseController(IMediator mediator) : Controller
             return null;
         }
     }
-
 
 }
