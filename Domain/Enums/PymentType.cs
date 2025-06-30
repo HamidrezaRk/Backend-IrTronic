@@ -7,3 +7,8 @@ public enum PaymentType
     MyFatoorah,
     SkipCash
 }
+public enum DynamicPaymentType
+{
+    Cash,
+    Wallet,
+}
