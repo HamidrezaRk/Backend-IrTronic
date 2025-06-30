@@ -1,8 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Domain.Entites;
+using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.DbContext;
- class MasterDbContext(DbContextOptions<MasterDbContext> options) : Microsoft.EntityFrameworkCore.DbContext(options)
- {
 
- }
-
+public class MasterDbContext(DbContextOptions<MasterDbContext> options) : Microsoft.EntityFrameworkCore.DbContext(options)
+{
+    public DbSet<UserEntity> Users { get; set; }
+}
