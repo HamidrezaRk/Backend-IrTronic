@@ -1,5 +1,5 @@
 ﻿namespace Domain.Entites;
 
-public class WarrantyEntity
+public class BrandEntity
 {
 }
