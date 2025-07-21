@@ -1,9 +1,10 @@
-﻿using Domain.Enums;
+﻿using Domain.Entites.BaseEntities;
+using Domain.Enums;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Domain.Entites;
 
-public class DeliveryEntity
+public class DeliveryEntity : BaseEntity
 {
     [ForeignKey(nameof(Order))]
     public required int OrderId { get; set; }

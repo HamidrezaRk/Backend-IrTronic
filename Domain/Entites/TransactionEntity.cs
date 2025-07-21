@@ -1,10 +1,12 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Domain.Entites;
 
+[PrimaryKey(nameof(Id))]
 public class TransactionEntity
 {
-    public int Id { get; }
+    public int Id { get;}
     public required TransactionType Type { get; set; }
     public decimal Amount { get; set; }
     public DateTime Date { get; set; }

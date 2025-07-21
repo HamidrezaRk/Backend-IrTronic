@@ -1,9 +1,10 @@
-﻿using Domain.Enums;
+﻿using Domain.Entites.BaseEntities;
+using Domain.Enums;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Domain.Entites;
 
-public class OrderLogEntity
+public class OrderLogEntity : BaseEntity
 {
     public OrderLogs Log { get; set; }
     public required string Message { get; set; }

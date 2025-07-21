@@ -18,7 +18,7 @@ public class UserEntity : BaseEntity
 
     [InverseProperty(nameof(AddressEntity.User))]
     public List<AddressEntity>? Addresses { get; set; }
-    public bool IsSuspended { get; set; }
+    public bool IsSuspended { get; set; }   
     public string? CountryCode { get; set; }
     public decimal Wallet { get; set; }
     public string? SocialNumber { get; set; }

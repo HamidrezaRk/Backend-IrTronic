@@ -3,8 +3,9 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Domain.Entites;
 
- public class AddressEntity : BaseEntity
+ public class AddressEntity 
  {
+    public int Id { get; set; }
     public string? FirstName { get; set; }
     public string? LastName { get; set; }
     [ForeignKey(nameof(User))]
