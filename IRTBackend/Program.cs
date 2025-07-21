@@ -1,4 +1,5 @@
 using Microsoft.OpenApi.Models;
+using Infrastructure;
 
 internal class Program
 {
@@ -44,7 +45,7 @@ internal class Program
         #region ConectionString
         string MasterDbConnectionString = builder.Configuration.GetConnectionString("MasterDatabase")!;
         string SlaveDbConnectionString = builder.Configuration.GetConnectionString("SlaveDatabase")!;
-
+        string fileApiBaseUrl = builder.Configuration.GetSection("FileAPIBaseUrl").Value!;
         #endregion
         #region JWT
         //var jwtSettings = new JwtSettings();
@@ -73,6 +74,9 @@ internal class Program
         //    options.AddPolicy("RequireAdminRole", policy => policy.RequireRole("1"));
 
         //});
+        #endregion
+        #region DependencyInjection
+        builder.Services.AddInfrastructure(MasterDbConnectionString, SlaveDbConnectionString, fileApiBaseUrl);
         #endregion
         var app = builder.Build();
 
